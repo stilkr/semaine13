@@ -40,7 +40,7 @@
 			
 			-->		
 			
-			<form ng-submit="valider()">
+			<form style="display:{{visuel}}" ng-submit="valider()">
 			<h2 >{{questionnaire.q}}</h2>
 			<img ng-src="{{ questionnaire.image }}">
 				<input type="radio" ng-model="reponse" value="reponseA">{{questionnaire.reponseA}}<br>
