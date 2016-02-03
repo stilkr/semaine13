@@ -1,0 +1,32 @@
+﻿<!DOCTPYE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+			<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+			<link type="text/css" rel="stylesheet" href="style.css">
+				
+			<title>Tenue de compte</title>
+	</head>
+	<body>
+		<h1>Tenue de compte</h1>
+		<div ng-app="app" class="container">
+		
+		<div ng-controller="appCtrl" class="row">
+			<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+			<input ng-model="valeur" placeholder="valeur" />
+			</div>
+			<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+			<button type="button" class="btn btn-primary" ng-click="addDepense()">Ajouter une dépense</button>
+			<ul>
+				<li ng-repeat="depense in depenses">
+					{{ depense.valeur }} <span ng-click="rmDepense($index)">×</span>
+				</li>
+			</ul>
+			<strong>Total des dépenses : {{ total }}</strong>
+			</div>
+		</div>
+		</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>	
+	<script src="script.js"></script>
+	</body>
+</html>

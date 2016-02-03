@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="stylesheet.css">
+			
+		<title>Le cinéma suédois contemporain en 15 questions</title>
+	</head>
+	
+	<body ng-app="AppQCM" ng-controller="Questionnaire" >
+		<div class="container">
+		<h1>{{ title }}</h1>	
+			<div class="row">
+	
+			<!-- première colonne -->
+			<div class="col lg-7 col-md-7 col-sm-12 col-xs-12">
+			
+		
+			<!-- version 4 où je copie faute de trouver comment faire les fonctions de comptage de points dans des nested arrays T_T -->
+			
+			<!-- à noter que mes "nested arrays" donnaient un fichier html beaucoup plus court et sympa : 
+		
+			<form ng-controller="QCMCtrl" ng-repeat="item in questions">
+				<img ng-src="{{ item.image }}"> <h3>{{ item.q }}</h3>
+
+				<ul>
+					<li ng-repeat="item in questions[$index].valeur |  orderBy:'text'">				 
+					<input type="radio" required  ng-click="Copperfield()"/>
+					{{ item.text }}
+					</li>
+				</ul>
+				<div ng-show = "estVisible">
+					<p>{{ item.feedback }}</p>
+					<a ng-href="{{ item.lien }}" target="blank">En savoir plus</a>
+				</div>
+					
+				<hr>		
+			</form> 
+			
+			-->		
+			
+			<form ng-submit="valider()">
+			<h2 >{{questionnaire.q}}</h2>
+			<img ng-src="{{ questionnaire.image }}">
+				<input type="radio" ng-model="reponse" value="reponseA">{{questionnaire.reponseA}}<br>
+				<input type="radio" ng-model="reponse" value="reponseB">{{questionnaire.reponseB}}<br>
+				<input type="radio" ng-model="reponse" value="reponseC">{{questionnaire.reponseC}}<br>
+				<input type="radio" ng-model="reponse" value="reponseD">{{questionnaire.reponseD}}<br>
+				<input class="btn btn-info" type="submit" value="valider">	
+			</form>
+	
+			</div>
+
+			<!-- seconde colonne -->
+			<div class="col lg-5 col-md-5 col-sm-12 col-xs-12">	
+		
+				<div style="display:{{resultat}}">
+				<h1>Total des points:{{points}} /100</h1>		
+					<p>Points dans la catégorie culture générale: {{categorie1}} /60</p>
+					<p>Points dans la catégorie connaissances de pointe: {{categorie2}} /40</p>
+					<p><strong>{{texte}}</strong></p>
+		
+				</div>
+		
+				<div style="display:{{resultat}}">
+				<h2>Solutions</h2>
+				<p>Vous aurez remarqué la récurrence de "<strong>ng</strong>" dans les titres. Et oui, c'était une "private joke" pour les fans d'Angular que vous êtes;)</p>
+				
+				<ul>
+					<li ng-repeat="item in questions">
+					<h3>{{item.q}}</h3>
+					<p><em>{{item.bonneReponse}}</em></p>
+					<a ng-href="{{ item.lien }}" target="blank">En savoir plus</a>				
+					</li>
+				<ul>
+				
+				<hr>
+			  
+				<a class="btn btn-info" type="button" href="http://www.facebook.com/15AnsDeCinemaSuedoisContemporain" target="blank"><span class="glyphicon glyphicon-thumbs-up"></span> la page FB</a><button class="btn btn-danger" ng-click="clear()">recommencer</button>
+			  			
+				</div>	  
+	
+			</div>
+		<video controls muted autoplay loop poster="/img/icy.jpg" id="bgvid">
+		<source src="video/Icy.webm" type="video/webm">
+		<source src="video/Icy.mp4" type="video/mp4">
+		</video>
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+
+		<script src="questionnaire.js"></script>
+	</body>
+</html>
